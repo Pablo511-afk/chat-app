@@ -18,8 +18,6 @@ const Dashboard = () => {
     navigate("/login");
   };
 
-  // const user = JSON.parse(localStorage.getItem("user"));
-
   return (
     <>
       <button className="logout-button" onClick={handleLogout}>
@@ -29,9 +27,8 @@ const Dashboard = () => {
         <iframe
           width="560"
           height="315"
-          src="https://www.youtube.com/embed/-ahCssisfwQ?si=dzrUi4ucXb33OxXL"
+          src="https://www.youtube.com/embed/Xbjgt7ZM4to?si=DJqR2a1Vd4pBL4ja"
           title="YouTube video player"
-          frameBorder="0"
           allow="autoplay; fullscreen"
           referrerPolicy="strict-origin-when-cross-origin"
           allowfullscreen

@@ -1,10 +1,9 @@
-/* Contenedor general del chat */
 .chat-container {
-  position: fixed; /* Fija el chat en la pantalla */
-  bottom: 20px; /* Distancia desde la parte inferior */
-  right: 20px; /* Distancia desde la parte derecha */
-  width: 400px; /* Ancho del recuadro del chat */
-  height: 500px; /* Altura del recuadro del chat */
+  position: fixed; 
+  bottom: 20px;
+  right: 20px;
+  width: 400px;
+  height: 500px;
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -13,7 +12,6 @@
   overflow: hidden;
 }
 
-/* Área de mensajes */
 .chat-messages {
   flex: 1;
   padding: 1rem;
@@ -21,7 +19,6 @@
   border-bottom: 1px solid #ccc;
 }
 
-/* Mensaje individual */
 .message {
   background-color: #72b3f3;
   padding: 0.5rem 1rem;
@@ -40,7 +37,6 @@
   word-wrap: break-word;
 }
 
-/* Input y botón */
 .chat-input {
   display: flex;
   padding: 0.5rem;

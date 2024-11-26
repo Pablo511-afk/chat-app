@@ -7,7 +7,7 @@ const UserForm = () => {
     name: "",
     user: "",
     password: "",
-    type: "STUDENT", // Valor predeterminado
+    type: "STUDENT",
   });
 
   const [error, setError] = useState("");
@@ -35,7 +35,8 @@ const UserForm = () => {
       });
 
       if (!response.ok) {
-        throw new Error("Invalid credentials");
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Invalid credentials");
       }
 
       const data = await response.json();

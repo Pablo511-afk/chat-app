@@ -1,18 +1,23 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./Chat.css";
 import { io } from "socket.io-client";
 
 const ChatBox = () => {
-  const [message, setMessage] = useState(""); // Estado para el mensaje
+  const [message, setMessage] = useState("");
   const [isConnected, setIsConnected] = useState(false);
   const [messages, setMessages] = useState([]);
+  const messagesEndRef = useRef(null);
 
   const socket = io("http://localhost:3000");
 
-  useEffect(() => {
+  const handleConnect = () => {
     socket.on("connect", () => {
       setIsConnected(true);
     });
+  };
+
+  useEffect(() => {
+    handleConnect();
 
     socket.on("message", (data) => {
       setMessages((prevMessages) => [...prevMessages, data]);
@@ -24,11 +29,16 @@ const ChatBox = () => {
     };
   }, []);
 
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
   const handleSendMessage = () => {
-    setMessage(""); // Limpiar el campo de texto
+    setMessage("");
 
     socket.emit("message", {
       user: JSON.parse(localStorage.getItem("user")).name,
+      userId: JSON.parse(localStorage.getItem("user")).id,
       message,
     });
   };
@@ -42,10 +52,10 @@ const ChatBox = () => {
               {message.user}: {message.message}
             </p>
           ))}
-          {/* Aquí puedes renderizar mensajes (puedes agregar lógica dinámica) */}
           <p className={isConnected ? "message" : "message-disconnected"}>
             {isConnected ? "Conectado" : "Desconectado"}
           </p>
+          <div ref={messagesEndRef} />
         </div>
         <div className="chat-input">
           <input
