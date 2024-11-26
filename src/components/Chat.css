@@ -37,6 +37,15 @@
   word-wrap: break-word;
 }
 
+.message-moderator {
+  background-color: #fc9696;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  margin-bottom: 0.5rem;
+  max-width: 70%;
+  word-wrap: break-word;
+}
+
 .chat-input {
   display: flex;
   padding: 0.5rem;

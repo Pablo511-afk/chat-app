@@ -39,6 +39,7 @@ const ChatBox = () => {
     socket.emit("message", {
       user: JSON.parse(localStorage.getItem("user")).name,
       userId: JSON.parse(localStorage.getItem("user")).id,
+      type: JSON.parse(localStorage.getItem("user")).type,
       message,
     });
   };
@@ -48,7 +49,12 @@ const ChatBox = () => {
       <div className="chat-box">
         <div className="chat-messages">
           {messages.map((message, index) => (
-            <p key={index} className="message">
+            <p
+              key={index}
+              className={
+                message.type === "STUDENT" ? "message" : "message-moderator"
+              }
+            >
               {message.user}: {message.message}
             </p>
           ))}
